@@ -12,10 +12,12 @@
 - no bullshit
 - no fluff
 
-## Technical Requirements 
+## Technical Information  
 - Modern HTML5, CSS3, and JavaScript (vanilla)
 - No frameworks or libraries
 - Deployed to Cloudflare Workers 
+
+I deploy this to Cloudflare Workers via Github CI/CD intergration. Whenever I commit to the main branch, the changes are automatically deployed to Cloudflare Workers. 
 
 ## Website Structure 
 - Landing Page
