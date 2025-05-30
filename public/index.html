@@ -3,258 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      James Rutter, Ph.D. | Technology & Digital Fabrication Consultant
-    </title>
+    <title>James Rutter | Technology & Digital Fabrication</title>
     <meta
       name="description"
       content="Technology Director and Digital Fabrication expert bridging worlds between making, education, and modern operations."
     />
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <nav class="nav">
-      <div class="nav_container">
-        <a href="#home" class="nav_logo">James Rutter</a>
-        <ul class="nav_menu">
-          <li class="nav_item"><a href="#about" class="nav_link">About</a></li>
-          <li class="nav_item">
-            <a href="#projects" class="nav_link">Projects</a>
-          </li>
-          <li class="nav_item">
-            <a href="#services" class="nav_link">Services</a>
-          </li>
-          <li class="nav_item">
-            <a href="#experience" class="nav_link">Experience</a>
-          </li>
-          <li class="nav_item">
-            <a href="#contact" class="nav_link">Contact</a>
-          </li>
-        </ul>
-        <button class="nav_toggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <header>
+      <div class="wrapper">
+        <nav>
+          <a href="/" class="logo">James Rutter</a>
+          <ul>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </nav>
+    </header>
 
     <main>
-      <section id="home" class="hero">
-        <div class="container">
-          <div class="hero_content">
-            <h1 class="hero_title">James Rutter, Ph.D.</h1>
-            <p class="hero_subtitle">
-              Technology Director & Digital Fabrication Expert
-            </p>
-            <p class="hero_description">
-              Bridging worlds between making, education, and modern operations
-            </p>
-            <a href="#contact" class="btn btn_primary">Get In Touch</a>
-          </div>
+      <section class="hero">
+        <div class="wrapper full-width">
+          <article>
+            <h2>Technology Director</h2>
+            <h2>Digital Fabrication Expert</h2>
+            <h2>Tech Therapist</h2>
+            <h2>Community Builder</h2>
+          </article>
         </div>
       </section>
 
-      <section id="about" class="section">
-        <div class="container">
-          <h2 class="section_title">About</h2>
-          <div class="about_content">
-            <div class="about_text">
-              <p>
-                I'm a technology and digital fabrication expert who bridges the
-                worlds of making, education, and modern organizational
-                operations. With a Ph.D. in STEM Education and over a decade of
-                experience in digital fabrication and technology leadership, I
-                help organizations modernize their operations while empowering
-                communities through technology education.
-              </p>
-
-              <p>
-                Currently serving as Technology Director at Haystack Mountain
-                School of Crafts, I've transformed a paper-driven organization
-                into a cloud-first operation while developing innovative
-                programs like "Haystack Labs" - our Fab Lab Residency program
-                that brings together artists and technologists.
-              </p>
-
-              <p>
-                My journey spans from DIY electronics and Arduino projects to
-                developing educational curricula, from working with MIT's Fab
-                Foundation network to building modern SaaS solutions. I've
-                always been passionate about making and building - from my first
-                websites on dial-up internet to today's powerful browser-based
-                applications.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="section section_dark">
-        <div class="container">
-          <h2 class="section_title">Featured Projects</h2>
-          <div class="projects_grid">
-            <article class="project_card">
-              <h3 class="project_title">Haystack Labs Residency Program</h3>
-              <p class="project_description">
-                Developed an innovative Fab Lab residency program connecting
-                artists with digital fabrication technology.
-              </p>
-              <div class="project_tags">
-                <span class="tag">Program Development</span>
-                <span class="tag">Digital Fabrication</span>
-                <span class="tag">Arts & Technology</span>
-              </div>
-            </article>
-
-            <article class="project_card">
-              <h3 class="project_title">
-                Organizational Digital Transformation
-              </h3>
-              <p class="project_description">
-                Led complete digital transformation of operations, transitioning
-                from paper-based to cloud-first workflows.
-              </p>
-              <div class="project_tags">
-                <span class="tag">Digital Transformation</span>
-                <span class="tag">Cloud Operations</span>
-                <span class="tag">Process Optimization</span>
-              </div>
-            </article>
-
-            <article class="project_card">
-              <h3 class="project_title">K-12 Digital Fabrication Curriculum</h3>
-              <p class="project_description">
-                Created educational kits and curricula introducing digital
-                fabrication and engineering into formal K-12 education.
-              </p>
-              <div class="project_tags">
-                <span class="tag">STEM Education</span>
-                <span class="tag">Curriculum Design</span>
-                <span class="tag">Educational Technology</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" class="section">
-        <div class="container">
-          <h2 class="section_title">Services</h2>
-          <div class="services_grid">
-            <div class="service_card">
-              <h3 class="service_title">Digital Transformation Consulting</h3>
-              <p class="service_description">
-                Help organizations modernize operations and adopt cloud-first
-                workflows
-              </p>
-            </div>
-
-            <div class="service_card">
-              <h3 class="service_title">Educational Program Development</h3>
-              <p class="service_description">
-                Design STEAM curricula and digital fabrication educational
-                experiences
-              </p>
-            </div>
-
-            <div class="service_card">
-              <h3 class="service_title">
-                Technology Strategy & Implementation
-              </h3>
-              <p class="service_description">
-                Strategic technology planning and custom solution development
-              </p>
-            </div>
-
-            <div class="service_card">
-              <h3 class="service_title">Fab Lab & Makerspace Consulting</h3>
-              <p class="service_description">
-                Setup, development, and optimization of digital fabrication
-                spaces
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section section_dark">
-        <div class="container">
-          <h2 class="section_title">Experience & Background</h2>
-          <div class="timeline">
-            <div class="timeline_item">
-              <div class="timeline_date">2019 - Present</div>
-              <div class="timeline_content">
-                <h3>Technology Director</h3>
-                <p class="timeline_company">
-                  Haystack Mountain School of Crafts
-                </p>
-                <p>
-                  Leading technology operations and Fab Lab programs, overseeing
-                  digital transformation initiatives.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline_item">
-              <div class="timeline_date">2014 - 2019</div>
-              <div class="timeline_content">
-                <h3>Ph.D. in STEM Education</h3>
-                <p class="timeline_company">University of Virginia</p>
-                <p>
-                  Researched and developed educational technologies for K-12
-                  digital fabrication and engineering education.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline_item">
-              <div class="timeline_date">2010 - 2014</div>
-              <div class="timeline_content">
-                <h3>AmeriCorps VISTA / Fab Lab Coordinator</h3>
-                <p class="timeline_company">AS220 Labs</p>
-                <p>
-                  Developed robust makerspace and digital fabrication center,
-                  worked with MIT Fab Foundation network.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <div class="container">
-          <h2 class="section_title">Let's Work Together</h2>
-          <div class="contact_content">
-            <p class="contact_description">
-              Interested in collaborating or need help with digital
-              transformation, educational technology, or Fab Lab development?
-              I'd love to hear about your project.
-            </p>
-            <div class="contact_info">
-              <p class="contact_location">📍 Stonington, Maine</p>
-              <a href="mailto:james@jamesdavidrutter.com" class="contact_email"
-                >📧 james@jamesdavidrutter.com</a
+      <section class="connect section">
+        <div class="wrapper full-width">
+          <h2 class="section__title">Connect</h2>
+          <div class="info">
+            <a href="mailto:james@jamesdavidrutter.com">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="currentColor"
+                viewBox="0 0 256 256"
               >
-            </div>
+                <path
+                  d="M224,50H32a6,6,0,0,0-6,6V192a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V56A6,6,0,0,0,224,50ZM208.58,62,128,135.86,47.42,62ZM216,194H40a2,2,0,0,1-2-2V69.64l86,78.78a6,6,0,0,0,8.1,0L218,69.64V192A2,2,0,0,1,216,194Z"
+                ></path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/jamesdrutter/" target="_blank">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M216,26H40A14,14,0,0,0,26,40V216a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V40A14,14,0,0,0,216,26Zm2,190a2,2,0,0,1-2,2H40a2,2,0,0,1-2-2V40a2,2,0,0,1,2-2H216a2,2,0,0,1,2,2ZM94,112v64a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0Zm88,28v36a6,6,0,0,1-12,0V140a22,22,0,0,0-44,0v36a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0v2.11A34,34,0,0,1,182,140ZM98,84A10,10,0,1,1,88,74,10,10,0,0,1,98,84Z"
+                ></path>
+              </svg>
+            </a>
+            <a href="https://github.com/jamesdrutter" target="_blank">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M206.13,75.92A57.79,57.79,0,0,0,201.2,29a6,6,0,0,0-5.2-3,57.77,57.77,0,0,0-47,24H123A57.77,57.77,0,0,0,76,26a6,6,0,0,0-5.2,3,57.79,57.79,0,0,0-4.93,46.92A55.88,55.88,0,0,0,58,104v8a54.06,54.06,0,0,0,50.45,53.87A37.85,37.85,0,0,0,98,192v10H72a26,26,0,0,1-26-26A38,38,0,0,0,8,138a6,6,0,0,0,0,12,26,26,0,0,1,26,26,38,38,0,0,0,38,38H98v18a6,6,0,0,0,12,0V192a26,26,0,0,1,52,0v40a6,6,0,0,0,12,0V192a37.85,37.85,0,0,0-10.45-26.13A54.06,54.06,0,0,0,214,112v-8A55.88,55.88,0,0,0,206.13,75.92ZM202,112a42,42,0,0,1-42,42H112a42,42,0,0,1-42-42v-8a43.86,43.86,0,0,1,7.3-23.69,6,6,0,0,0,.81-5.76,45.85,45.85,0,0,1,1.43-36.42,45.85,45.85,0,0,1,35.23,21.1A6,6,0,0,0,119.83,62h32.34a6,6,0,0,0,5.06-2.76,45.83,45.83,0,0,1,35.23-21.11,45.85,45.85,0,0,1,1.43,36.42,6,6,0,0,0,.79,5.74A43.78,43.78,0,0,1,202,104Z"
+                ></path>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">
+    <footer>
+      <div class="wrapper">
         <p>&copy; 2025 James Rutter. All rights reserved.</p>
       </div>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>

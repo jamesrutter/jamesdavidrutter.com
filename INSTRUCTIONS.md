@@ -1,6 +1,15 @@
 # Planning Document & Instructions 
 
-## Goals & Design Requirements 
+## Goals 
+My goals are to attract consulting opportunities and showcase my work, having a spot to link to all my projects and work, eventually I will begin writing articles, but for now, the goal is to just showcase and hopefully demonstrate my client projects to prospective clients.
+
+
+## Technical Information  
+- Modern HTML5, CSS3, and JavaScript (vanilla)
+- No frameworks or libraries
+- Deployed to Cloudflare Workers 
+
+### Design Requirements 
 - mobile friendly (mobile first)
 - clean and modern design (dark mode preferred)
 - light, thin fonts
@@ -12,19 +21,9 @@
 - no bullshit
 - no fluff
 
-## Technical Information  
-- Modern HTML5, CSS3, and JavaScript (vanilla)
-- No frameworks or libraries
-- Deployed to Cloudflare Workers 
+I deploy this to Cloudflare Workers via Github CI/CD intergration. Whenever I commit to the main branch, the changes are automatically deployed to Cloudflare Workers. My wrangler jsonc file is in the root of the project and sets the assets directory to the public folder (`./public`).
 
-I deploy this to Cloudflare Workers via Github CI/CD intergration. Whenever I commit to the main branch, the changes are automatically deployed to Cloudflare Workers. 
+## Project Structure 
 
-## Website Structure 
-- Landing Page
-- About 
-- Projects 
-- CV/Resume 
-- Writing (articles)
-- Contact & Collaborate 
-
-## Content 
+`/content` - is where all my content planning will be located, used for reference and content development 
+`/public` - is where the published content that cloudflare publishes into the static website 
