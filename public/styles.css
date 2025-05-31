@@ -34,6 +34,7 @@
   --container-max-width: 1200px;
   --container-padding: 1rem;
   --border-radius: 8px;
+  --header-height: 50px;
 
   /* Breakpoints */
   --medium-screen: 760px;
@@ -86,15 +87,15 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(15, 15, 15, 0.95);
-  backdrop-filter: blur(10px);
+  background-color: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(3px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: var(--header-height);
   }
   .logo {
     font-weight: var(--font-weight-extra-light);
@@ -199,4 +200,162 @@ footer {
 
 .bg-dark {
   background-color: var(--bg-secondary);
+}
+
+/* About Page Styles */
+.about-content {
+  padding-top: calc(var(--header-height) + var(--space-2xl));
+  padding-bottom: var(--space-2xl);
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+
+  h1 {
+    font-size: 3rem;
+    font-weight: var(--font-weight-light);
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+
+  .about-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+}
+
+.about-section {
+  margin-bottom: var(--space-2xl);
+
+  h2 {
+    font-size: 2rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--space-sm);
+  }
+
+  p {
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .story-intro {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: var(--space-xl);
+  }
+}
+
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: var(--space-lg);
+  border-left: 2px solid var(--border);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .timeline-period {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: var(--font-weight-medium);
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  p {
+    margin-bottom: var(--space-md);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.values-grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.value-item {
+  h3 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.footnote {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+  text-align: center;
+
+  p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+  }
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-header .about-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .timeline-item {
+    padding-left: var(--space-md);
+
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 }
