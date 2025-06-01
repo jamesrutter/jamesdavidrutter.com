@@ -14,6 +14,9 @@
 .obsidian/plugins/obsidian-git/
 .obsidian/plugins/*/node_modules/
 
+.obsidian/themes/Things/manifest.json
+.obsidian/themes/Things/theme.css
+
 # User-specific settings (comment out if you want to share these)
 .obsidian/hotkeys.json
 .obsidian/app.json

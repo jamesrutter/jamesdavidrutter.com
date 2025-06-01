@@ -1,20 +1,5 @@
 ## Strategic Technology & IT Consulting
 
-### Skills:
-- Strategic thinking, first-principles problem solving, systems thinking
-- Technology auditing and assessment
-- Business process analysis and optimization
-- Workflow design and automation strategy
-- Digital transformation planning and roadmapping
-- Organizational "operating system" design (your OrgOS & Haystack OS concepts)
-- Cloud migration strategy
-- SaaS platform evaluation, selection, and integration planning
-- Data management and governance strategy
-- Vendor management and negotiation
-- Requirements gathering and stakeholder management
-- Understanding of non-profit, small business, educational, and municipal tech needs
-- Cybersecurity strategy and policy development
-- IT budgeting and cost-benefit analysis
 
 ### Services (Current & Potential):
 - Technology Audits & Digital Wellness Checks: Comprehensive evaluation of existing tech, identification of pain points, security vulnerabilities, and efficiency gaps.

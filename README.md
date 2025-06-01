@@ -14,11 +14,36 @@ For now, the repo has two main folders:
 - `public` - This is where I will store the website that will be hosted on Cloudflare Pages. It will be built using Astro and will be hosted on Cloudflare Pages. 
 
 
+## Portfolio Structure (Obsidian)
+Here are some notes on how I have Obsidian setup: 
 
-
-
-
-
-
-
-
+```
+portfolio/
+├── 00-Index/
+│   ├── bio.md
+│   ├── skills+tech.md
+│   └── projects.md
+├── 01-Templates/
+│   ├── Project Template.md
+│   └── Meeting Notes Template.md
+├── 02-Projects/
+│   ├── 2024-Website-Redesign/
+│   │   ├── Website-Redesign-Project.md
+│   │   ├── assets/
+│   │   │   ├── screenshots/
+│   │   │   ├── mockups/
+│   │   │   └── diagrams/
+│   │   └── notes/
+│   ├── 2023-Mobile-App/
+│   └── 2023-Data-Pipeline/
+├── 03-Skills/
+│   ├── Programming Languages.md
+│   ├── Frameworks & Tools.md
+│   └── Certifications.md
+├── 04-Career/
+│   ├── Resume Versions/
+│   ├── Interview Prep/
+│   └── Professional Development.md
+└── 99-Archive/
+    └── Completed Projects/
+```
