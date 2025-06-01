@@ -30,9 +30,3 @@ From building one of Rhode Island's first Fab Labs at AS220 to leading technolog
 ### Let's Connect
 
 Whether you're looking to transform your organization's technology infrastructure, develop innovative educational programs, or explore the possibilities of digital fabrication, I'd love to discuss how we can work together.
-
-**Ready to start a conversation?** [Get in touch →](contact.md)
-
----
-
-*Based in Stonington, Maine • Serving organizations worldwide*
