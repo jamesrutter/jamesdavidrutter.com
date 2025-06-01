@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter website dev",
+    "build": "pnpm --filter website build",
+    "preview": "pnpm --filter website preview",
+    "deploy": "pnpm --filter website build && wrangler pages deploy website/dist"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

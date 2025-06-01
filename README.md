@@ -5,13 +5,13 @@ This is a monorepo to contain my professional portfolio and other projects. It w
 ## Tech Stack
 - Obsidian 
 - Cloudflare Workers (for the portfolio website)
-- Website: HTML, CSS, JavaScript, and Cloudflare Pages (Astro in the future?)
-
+- Website: Astro (HTML, CSS, JavaScript)
+- pnpm (for package management and monorepo management)
 
 ## Repo Structure 
 For now, the repo has two main folders:
 - `portfolio` - This is the entry point for the Obsidian vault. It will allow me to use Obsidian as a high quality markdown editor tool to write my content and manage it in version control. 
-- `public` - This is where I will store the website that will be hosted on Cloudflare Pages. It will be built using Astro and will be hosted on Cloudflare Pages. 
+- `website` - This is where I will store the website that will be hosted on Cloudflare Pages. It will be built using Astro and will be hosted on Cloudflare Pages. 
 
 
 ## Portfolio Structure (Obsidian)
