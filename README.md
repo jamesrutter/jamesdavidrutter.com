@@ -47,3 +47,29 @@ portfolio/
 └── 99-Archive/
     └── Completed Projects/
 ```
+
+
+## Website (Astro)
+
+My portfolio website is built using Astro. It is hosted on Cloudflare Pages. 
+
+Since I am using pnpm workspaces, I can use the `pnpm --filter <package> <command>` syntax to run commands in the `website` package. 
+
+For example, to run the development server, I can run `pnpm --filter website dev`.
+
+To build the website, I can run `pnpm --filter website build`.
+
+To preview the website, I can run `pnpm --filter website preview`.
+
+To deploy the website, I can run `pnpm --filter website deploy`.
+
+### Structure 
+
+```
+website/
+├── src/
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   └── styles/
+```
