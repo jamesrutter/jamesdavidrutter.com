@@ -1,15 +1,31 @@
+---
+import "@/styles/reset.css";
+import "@/styles/global.css";
+import Header from "@/components/global/header.astro";
+import Footer from "@/components/global/footer.astro";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="@/styles/reset.css" />
-    <link rel="stylesheet" href="@/styles/global.css" />
-    <meta name="generator" content={Astro.generator} />
-    <title>James Rutter</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <meta
+      name="description"
+      content="Technology Director and Digital Fabrication expert bridging worlds between making, education, and modern operations."
+    />
+    <script
+      defer
+      src="https://analytics.techtherapy.me/script.js"
+      data-website-id="52f2fa37-acf0-4ebe-99f3-8b82161bc5bd"></script>
+    <title>James Rutter | Technology & Digital Fabrication</title>
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>
