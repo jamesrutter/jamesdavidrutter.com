@@ -1,9 +1,536 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+// Sort projects by date (newest first) by default
+const sorted_projects = projects.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+// Get unique categories for filtering
+const categories = [
+  ...new Set(projects.map((project) => project.data.category)),
+];
+
+// Get all unique tags
+const all_tags = [...new Set(projects.flatMap((project) => project.data.tags))];
 ---
 
 <Layout>
-  <main>
-    <h1>Projects</h1>
+  <main class="projects-page">
+    <div class="wrapper">
+      <div class="page-header">
+        <h1 class="page-title">Projects</h1>
+        <p class="page-description">
+          A collection of my work spanning technology leadership, digital
+          fabrication, and creative collaboration.
+        </p>
+      </div>
+
+      <div class="projects-controls">
+        <div class="filters">
+          <div class="filter-group">
+            <label for="category-filter">Category:</label>
+            <select id="category-filter" class="filter-select">
+              <option value="">All Categories</option>
+              {
+                categories.map((category) => (
+                  <option value={category}>{category}</option>
+                ))
+              }
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sort-filter">Sort by:</label>
+            <select id="sort-filter" class="filter-select">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="title-asc">Title A-Z</option>
+              <option value="title-desc">Title Z-A</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="search-group">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search projects..."
+            class="search-input"
+          />
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        {
+          sorted_projects.map((project) => (
+            <article
+              class="project-card"
+              data-category={project.data.category}
+              data-tags={project.data.tags.join(" ")}
+            >
+              <div class="project-card-content">
+                <div class="project-card-header">
+                  <div class="project-meta">
+                    <span class="category">{project.data.category}</span>
+                    <time datetime={project.data.date.toISOString()}>
+                      {project.data.date.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                      })}
+                    </time>
+                  </div>
+                </div>
+
+                <h2 class="project-title">
+                  <a href={`/projects/${project.id.split("/")[0]}`}>
+                    {project.data.title}
+                  </a>
+                </h2>
+
+                <p class="project-description">{project.data.description}</p>
+
+                {project.data.tags && project.data.tags.length > 0 && (
+                  <div class="project-tags">
+                    {project.data.tags.slice(0, 3).map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                    {project.data.tags.length > 3 && (
+                      <span class="tag-more">
+                        +{project.data.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <div class="project-card-footer">
+                  <a
+                    href={`/projects/${project.id.split("/")[0]}`}
+                    class="read-more"
+                  >
+                    Read More →
+                  </a>
+                  {project.data.link && (
+                    <a
+                      href={project.data.link}
+                      class="external-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Project ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div id="no-results" class="no-results" style="display: none;">
+        <p>No projects found matching your criteria.</p>
+      </div>
+    </div>
   </main>
 </Layout>
+
+<style>
+  .projects-page {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-2xl);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .projects-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2xl);
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .filters {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .filter-group label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .filter-select {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    min-width: 150px;
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .search-group {
+    flex: 1;
+    max-width: 300px;
+  }
+
+  .search-input {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .search-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .project-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .project-card-content {
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card-header {
+    margin-bottom: var(--space-md);
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .category {
+    background-color: var(--bg-tertiary);
+    color: var(--accent);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .project-meta time {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .project-title {
+    margin-bottom: var(--space-md);
+  }
+
+  .project-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s ease;
+  }
+
+  .project-title a:hover {
+    color: var(--accent);
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tag {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+  }
+
+  .tag-more {
+    background-color: var(--bg-primary);
+    color: var(--text-muted);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+  }
+
+  .project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .read-more:hover {
+    color: var(--accent-hover);
+  }
+
+  .external-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+  }
+
+  .external-link:hover {
+    color: var(--accent);
+  }
+
+  .no-results {
+    text-align: center;
+    padding: var(--space-2xl);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .projects-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .filters {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .search-group {
+      max-width: none;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+</style>
+
+<script>
+  // Client-side filtering and search functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const projects_grid = document.getElementById(
+      "projects-grid"
+    ) as HTMLElement;
+    const no_results = document.getElementById("no-results") as HTMLElement;
+    const category_filter = document.getElementById(
+      "category-filter"
+    ) as unknown as HTMLSelectElement;
+    const sort_filter = document.getElementById(
+      "sort-filter"
+    ) as unknown as HTMLSelectElement;
+    const search_input = document.getElementById(
+      "search-input"
+    ) as unknown as HTMLInputElement;
+    const project_cards = Array.from(
+      document.querySelectorAll(".project-card")
+    ) as HTMLElement[];
+
+    if (
+      !projects_grid ||
+      !no_results ||
+      !category_filter ||
+      !sort_filter ||
+      !search_input
+    ) {
+      return;
+    }
+
+    function filter_and_sort_projects() {
+      const category_value = category_filter.value.toLowerCase();
+      const search_value = search_input.value.toLowerCase();
+      const sort_value = sort_filter.value;
+
+      // Filter projects
+      let visible_projects = project_cards.filter((card) => {
+        const card_category = (card.dataset.category || "").toLowerCase();
+        const card_tags = (card.dataset.tags || "").toLowerCase();
+        const title_element = card.querySelector(".project-title a");
+        const description_element = card.querySelector(".project-description");
+
+        if (!title_element || !description_element) return false;
+
+        const card_title = (title_element.textContent || "").toLowerCase();
+        const card_description = (
+          description_element.textContent || ""
+        ).toLowerCase();
+
+        // Category filter
+        const category_match =
+          !category_value || card_category === category_value;
+
+        // Search filter
+        const search_match =
+          !search_value ||
+          card_title.includes(search_value) ||
+          card_description.includes(search_value) ||
+          card_tags.includes(search_value);
+
+        return category_match && search_match;
+      });
+
+      // Sort projects
+      visible_projects.sort((a, b) => {
+        const a_title_element = a.querySelector(".project-title a");
+        const b_title_element = b.querySelector(".project-title a");
+        const a_time_element = a.querySelector("time");
+        const b_time_element = b.querySelector("time");
+
+        if (
+          !a_title_element ||
+          !b_title_element ||
+          !a_time_element ||
+          !b_time_element
+        )
+          return 0;
+
+        const a_title = a_title_element.textContent || "";
+        const b_title = b_title_element.textContent || "";
+        const a_date = new Date(a_time_element.getAttribute("datetime") || "");
+        const b_date = new Date(b_time_element.getAttribute("datetime") || "");
+
+        switch (sort_value) {
+          case "date-asc":
+            return a_date.getTime() - b_date.getTime();
+          case "date-desc":
+            return b_date.getTime() - a_date.getTime();
+          case "title-asc":
+            return a_title.localeCompare(b_title);
+          case "title-desc":
+            return b_title.localeCompare(a_title);
+          default:
+            return b_date.getTime() - a_date.getTime();
+        }
+      });
+
+      // Hide all cards
+      project_cards.forEach((card) => {
+        card.style.display = "none";
+      });
+
+      // Show filtered and sorted cards
+      if (visible_projects.length === 0) {
+        no_results.style.display = "block";
+        projects_grid.style.display = "none";
+      } else {
+        no_results.style.display = "none";
+        projects_grid.style.display = "grid";
+
+        visible_projects.forEach((card) => {
+          card.style.display = "block";
+        });
+      }
+    }
+
+    // Event listeners
+    category_filter.addEventListener("change", filter_and_sort_projects);
+    sort_filter.addEventListener("change", filter_and_sort_projects);
+    search_input.addEventListener("input", filter_and_sort_projects);
+
+    // Initial sort
+    filter_and_sort_projects();
+  });
+</script>

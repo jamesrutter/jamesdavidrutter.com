@@ -1,3 +1,16 @@
+---
+title: Haystack IT Network
+description: A modern fiber-powered cloud managed network for Haystack's campus.
+image: 
+link: 
+category: it
+tags:
+  - haystack
+  - projects
+  - it  
+date: 2023-08-01
+---
+
 ## Organizational Digital Transformation
 **Type:** Digital Transformation, Cloud Operations, Process Optimization  
 **Year:** 2019-Present  

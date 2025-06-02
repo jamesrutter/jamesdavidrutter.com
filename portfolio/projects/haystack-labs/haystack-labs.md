@@ -1,17 +1,26 @@
 ---
+title: Haystack Labs
+description: A new experimental program bringing together a wide variety of technical and creative professionals to research, experiment, and develop new machines, processes, and techniques for integrating technology with craft.
+image: 
+link: 
+category: projects
 tags:
   - haystack
-  - project
-status: active
-project_name: Haystack Labs
+  - projects
+  - labs  
+date: 2023-08-01
 ---
 
 ## Overview
-This is the project page for Haystack Labs. 
+
 ### Haystack Labs 
 **Type:** Program Development, Digital Fabrication, Arts & Technology  
 **Year:** 2019-Present  
 **Role:** Creator & Program Director
+
+
+
+
 
 Developed an innovative Fab Lab residency program that bridges the gap between traditional craft making and digital fabrication technology. The program brings together artists, designers, and technologists for intensive collaborative residencies.
 
@@ -22,3 +31,4 @@ Developed an innovative Fab Lab residency program that bridges the gap between t
 
 
 ## Details 
+A new experimental program bringing together a wide variety of technical and creative professionals to research, experiment, and develop new machines, processes, and techniques for integrating technology with craft. Please visit haystack-mtn.org/haystack-labs to learn about the projects from past programs.

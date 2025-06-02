@@ -1,3 +1,17 @@
+---
+title: Invention Kits
+description: A comprehensive set of educational kits and curricula introducing digital fabrication and engineering concepts into formal K-12 education.
+image: 
+link: 
+category: steam education
+tags:
+  - uva
+  - education
+  - invention
+  - kits
+date: 2018-09-01
+---
+
 ## K-12 Digital Fabrication Curriculum
 **Type:** STEM Education, Curriculum Design, Educational Technology  
 **Year:** 2014-2019  

@@ -1,0 +1,221 @@
+---
+export interface Props {
+  project: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      category: string;
+      tags: string[];
+      date: Date;
+      link?: string | null;
+    };
+  };
+  showExternalLink?: boolean;
+}
+
+const { project, showExternalLink = true } = Astro.props;
+const slug = project.id.split("/")[0];
+---
+
+<article
+  class="project-card"
+  data-category={project.data.category}
+  data-tags={project.data.tags.join(" ")}
+>
+  <div class="project-card-content">
+    <div class="project-card-header">
+      <div class="project-meta">
+        <span class="category">{project.data.category}</span>
+        <time datetime={project.data.date.toISOString()}>
+          {
+            project.data.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+            })
+          }
+        </time>
+      </div>
+    </div>
+
+    <h2 class="project-title">
+      <a href={`/projects/${slug}`}>{project.data.title}</a>
+    </h2>
+
+    <p class="project-description">{project.data.description}</p>
+
+    {
+      project.data.tags && project.data.tags.length > 0 && (
+        <div class="project-tags">
+          {project.data.tags.slice(0, 3).map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+          {project.data.tags.length > 3 && (
+            <span class="tag-more">+{project.data.tags.length - 3}</span>
+          )}
+        </div>
+      )
+    }
+
+    <div class="project-card-footer">
+      <a href={`/projects/${slug}`} class="read-more"> Read More → </a>
+      {
+        showExternalLink && project.data.link && (
+          <a
+            href={project.data.link}
+            class="external-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .project-card-content {
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card-header {
+    margin-bottom: var(--space-md);
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .category {
+    background-color: var(--bg-tertiary);
+    color: var(--accent);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .project-meta time {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .project-title {
+    margin-bottom: var(--space-md);
+  }
+
+  .project-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s ease;
+  }
+
+  .project-title a:hover {
+    color: var(--accent);
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tag {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+  }
+
+  .tag-more {
+    background-color: var(--bg-primary);
+    color: var(--text-muted);
+    padding: calc(var(--space-xs) / 2) var(--space-xs);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+  }
+
+  .project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .read-more:hover {
+    color: var(--accent-hover);
+  }
+
+  .external-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+  }
+
+  .external-link:hover {
+    color: var(--accent);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .project-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+
+    .project-card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+</style>
+
